@@ -3,13 +3,30 @@ import React, {useState} from "react";
 import "./App.css";
 import BottomRow from "./BottomRow";
 
-/* const homeScore = 32
-const awayScore = 32 */
+
 
 function App() {
   //TODO: STEP 2 - Establish your application's state with some useState hooks.  You'll need one for the home score and another for the away score.
 const [homeScore, setHomeScore] = useState(0)
 const [awayScore, setAwayScore] = useState(0)
+
+//stretch: quarterUpdate Hook
+const [currentQuarter, setCurrentQuarter] = useState(1)
+
+/* STRETCH GOAL:
+Add a button that changes which quarter the game is in, 
+and then render the state quarter value on the scoreboard */
+const quarterUpdate = e => {
+  
+  if(currentQuarter < 4){
+   setCurrentQuarter(currentQuarter + 1)
+  }else{
+    setCurrentQuarter(1)
+  }
+}
+
+
+
 
 const homeTouchDown = e => {
   
@@ -30,6 +47,9 @@ const awayFieldGoal = e => {
   
   setAwayScore(awayScore + 3);
 }
+
+
+
   return (
     <div className="container">
       <section className="scoreboard">
@@ -46,6 +66,10 @@ const awayFieldGoal = e => {
             <h2 className="away__name">Tigers</h2>
             <div className="away__score">{awayScore}</div>
           </div>
+          <div className="quarter">
+        <h3 className="quarter__title">Quarter</h3>
+        <div className="quarter__value">{currentQuarter}</div>
+      </div>
         </div>
         <BottomRow />
       </section>
@@ -58,6 +82,9 @@ const awayFieldGoal = e => {
         <div className="awayButtons">
           <button onClick={awayTouchDown} className="awayButtons__touchdown">Away Touchdown</button>
           <button onClick={awayFieldGoal} className="awayButtons__fieldGoal">Away Field Goal</button>
+        </div>
+        <div className="quarterButton">
+          <button onClick={quarterUpdate} className="quarterButton__quarterUpdate">Quarter Update</button>
         </div>
       </section>
     </div>
