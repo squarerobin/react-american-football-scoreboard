@@ -12,17 +12,31 @@ const [awayScore, setAwayScore] = useState(0)
 
 //stretch: quarterUpdate Hook
 const [currentQuarter, setCurrentQuarter] = useState(1)
-
+const [counter, setCounter] = useState(0)
 /* STRETCH GOAL:
 Add a button that changes which quarter the game is in, 
 and then render the state quarter value on the scoreboard */
 const quarterUpdate = e => {
+
+ 
+    if(currentQuarter < 4){
+     setCurrentQuarter(currentQuarter + 1)
+    }else{
+      if (counter === 4) {
+        setCurrentQuarter("OT")
+        setCounter(0)
+      }else{
+        setCurrentQuarter(1)
+        setCounter(counter+1)
+      }
+    }
+
+    
+    
+   
+    
   
-  if(currentQuarter < 4){
-   setCurrentQuarter(currentQuarter + 1)
-  }else{
-    setCurrentQuarter(1)
-  }
+ 
 }
 
 
