@@ -1,5 +1,5 @@
 //TODO: STEP 1 - Import the useState hook.
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import BottomRow from "./BottomRow";
 
@@ -44,6 +44,33 @@ and then render the state quarter value on the scoreboard */
     setAwayScore(awayScore + 3);
   };
 
+  const [h, setH] = useState('00')
+  const [m, setM] = useState('05')
+  const [s, setS] = useState('00')
+
+  function startTime() {
+    var today = new Date();
+    setH(today.getHours())
+    setM(today.getMinutes())
+    setS(today.getSeconds());
+    setM(checkTime(m));
+    setS(checkTime(s));
+    //document.getElementById("txt").innerHTML = h + ":" + m + ":" + s;
+    setH(h)
+    setM(m)
+    setS(s)
+    //var t = setTimeout(startTime, 500);
+  }
+  function checkTime(i) {
+    if (i < 10) {
+      i = "0" + i;
+    } // add zero in front of numbers < 10
+    return i;
+  }
+
+  useEffect(() => {
+    startTime();
+  }, [startTime]);
   return (
     <div className="container">
       <section className="scoreboard">
@@ -55,7 +82,7 @@ and then render the state quarter value on the scoreboard */
 
             <div className="home__score">{homeScore}</div>
           </div>
-          <div className="timer">00:03</div>
+          <div className="timer">{`${h}:${m}:${s}`}</div>
           <div className="away">
             <h2 className="away__name">Tigers</h2>
             <div className="away__score">{awayScore}</div>
