@@ -44,33 +44,53 @@ and then render the state quarter value on the scoreboard */
     setAwayScore(awayScore + 3);
   };
 
-  const [h, setH] = useState('00')
-  const [m, setM] = useState('05')
-  const [s, setS] = useState('00')
+  const [h, setH] = useState(0)
+  const [m, setM] = useState(0)
+  const [s, setS] = useState(0)
+      let date = new Date("December 17, 1995 03:24:00");
+      let hours = date.getHours();
+      let minutes = date.getMinutes();
+      let seconds = date.getSeconds();
+   
+   
+  
 
-  function startTime() {
-    var today = new Date();
-    setH(today.getHours())
-    setM(today.getMinutes())
-    setS(today.getSeconds());
-    setM(checkTime(m));
-    setS(checkTime(s));
+   function checkTime(i) {
+     if (i < 10) {
+       i = "0" + i;
+     } // add zero in front of numbers < 10
+     return i;
+   }
+
+  const startTime =  () => {
+
+       //TODO logic
+
+ 
+       setH(checkTime(hours))
+       setM(checkTime(minutes))
+       setS(checkTime(seconds))
+      
+   
+  
     //document.getElementById("txt").innerHTML = h + ":" + m + ":" + s;
-    setH(h)
-    setM(m)
-    setS(s)
+      //document.body.onload = "startTime()";
+    }
+      useEffect(() =>  {
+  
+      setTimeout(() => startTime(), 1000)
+     })
+    
+  
+  
+    
     //var t = setTimeout(startTime, 500);
-  }
-  function checkTime(i) {
-    if (i < 10) {
-      i = "0" + i;
-    } // add zero in front of numbers < 10
-    return i;
-  }
+  
+ 
 
-  useEffect(() => {
-    startTime();
-  }, [startTime]);
+
+
+
   return (
     <div className="container">
       <section className="scoreboard">
