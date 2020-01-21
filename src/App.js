@@ -63,32 +63,22 @@ and then render the state quarter value on the scoreboard */
 
   const startTime =  () => {
 
-       
+  }
       
          
-    }
-      useEffect(() =>  {
-  
-        if(s === 60){
+     if(s >= 60){
           setS(0)
 
-        }
+      }
+      useEffect(() =>  {
+  
+       
       
         
-          setTimeout(() => setS(s+1), 1000)
+          setInterval (() => setS(s+1), 1000)
                
       }, [s])
-       useEffect(() => {
-          if (m === 60) {
-            setM(0);
-          }
-         setTimeout(() => setM(m + 1), 60000);
-       }, [m])
-
-        useEffect(() => {
-          setTimeout(() => setH(h + 1), 3600000);
-        }, [h])
-
+     
       
     
   
