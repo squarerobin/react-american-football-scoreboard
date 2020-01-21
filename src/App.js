@@ -47,10 +47,9 @@ and then render the state quarter value on the scoreboard */
   const [h, setH] = useState(0)
   const [m, setM] = useState(0)
   const [s, setS] = useState(0)
-      let date = new Date("December 17, 1995 03:24:00");
-      let hours = date.getHours();
-      let minutes = date.getMinutes();
-      let seconds = date.getSeconds();
+     
+      
+      
    
    
   
@@ -60,26 +59,30 @@ and then render the state quarter value on the scoreboard */
        i = "0" + i;
      } // add zero in front of numbers < 10
      return i;
-   }
+   } 
 
   const startTime =  () => {
 
        //TODO logic
-
- 
-       setH(checkTime(hours))
-       setM(checkTime(minutes))
-       setS(checkTime(seconds))
       
-   
-  
-    //document.getElementById("txt").innerHTML = h + ":" + m + ":" + s;
-      //document.body.onload = "startTime()";
+     
+      setS(s+1)
+       
+
+       if(s > 58) {
+         setS(0)
+         setM(m+1)
+       }
+       if (m > 58) {
+         setM(0);
+         setH(h + 1);
+       }
+    
     }
       useEffect(() =>  {
   
-      setTimeout(() => startTime(), 1000)
-     })
+        setTimeout(() => startTime(), 1000)
+      })
     
   
   
