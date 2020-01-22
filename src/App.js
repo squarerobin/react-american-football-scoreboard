@@ -62,14 +62,19 @@ and then render the state quarter value on the scoreboard */
    } 
 
   const startTime =  () => {
-
-  }
-      
-         
-     if(s >= 60){
+     
+     if(s === 60){
           setS(0)
+          setM(m+1)
 
       }
+      if(m === 60){
+        setM(0)
+        setH(h+1)
+      }
+  }
+      
+    
       useEffect(() =>  {
   
        
@@ -133,6 +138,20 @@ and then render the state quarter value on the scoreboard */
           </button>
         </div>
         <div className="quarterButton">
+          <button
+            onClick={quarterUpdate}
+            className="quarterButton__quarterUpdate"
+          >
+            Quarter Update
+          </button>
+          <div className="startButton">
+            <button
+              onClick={startTime} //TODO style this button and see what I need to do to use it to start the timer
+              className="quarterButton__quarterUpdate"
+            >
+              Quarter Update
+            </button>
+          </div>
           <button
             onClick={quarterUpdate}
             className="quarterButton__quarterUpdate"
