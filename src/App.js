@@ -80,7 +80,7 @@ and then render the state quarter value on the scoreboard */
        
       
         
-          setInterval (() => setS(s+1), 1000)
+          setTimeout (() => setS(s+1), 1000)
                
       }, [s])
      
