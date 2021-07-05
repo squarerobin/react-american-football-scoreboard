@@ -56,3 +56,8 @@ button:focus {
 button:active {
   transform: scale(0.99);
 }
+
+.timer{
+  min-width: 35rem;
+  padding: 1rem;
+}
